@@ -22,12 +22,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-    /*
-    IVAN IS A BIG DICK
-     */
-
+    private static final int PERMISSIONS_REQUEST_CAMERA = 100;
     private boolean isTorchOn = false;
     private Camera camera;
     private Camera.Parameters params;
@@ -41,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.CAMERA},
-                    Constants.PERMISSIONS_REQUEST_CAMERA);
+                    PERMISSIONS_REQUEST_CAMERA);
         }
 
         FloatingActionButton torchOnOffButton = (FloatingActionButton) findViewById(R.id.flashlight_btn);
@@ -59,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case Constants.PERMISSIONS_REQUEST_CAMERA: {
+            case PERMISSIONS_REQUEST_CAMERA: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getCamera();
