@@ -22,11 +22,12 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    /*add some interesting stuff*/
     private static final int PERMISSIONS_REQUEST_CAMERA = 100;
     private boolean isTorchOn = false;
     private Camera camera;
     private Camera.Parameters params;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,5 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isFlashlightExist() {
         return getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
