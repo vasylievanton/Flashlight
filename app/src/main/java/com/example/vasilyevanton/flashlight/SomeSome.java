@@ -5,4 +5,8 @@ package com.example.vasilyevanton.flashlight;
  */
 
 public class SomeSome {
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
